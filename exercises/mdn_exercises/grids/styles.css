@@ -1,0 +1,37 @@
+body {
+  width: 90%;
+  max-width: 900px;
+  margin: 2em auto;
+  font: .9em/1.2 Arial, Helvetica, sans-serif;
+}
+
+.container > div {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(207,232,220);
+  border: 2px solid rgb(79,185,227);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* how many columns, and then the
+  distribution of the column width relative to the body in the case of %
+  and fr*/
+  /*fr scales with available space, but you can exceed the body
+  container (900px here) if you make the grid-template-columns
+  wider than 900px. It will not scale. You can push over, and the
+  grid elements will go the right. fr has a minimum value, even if
+  you are using 1000px min for the left and right, the middle one as
+  fr will still have a value.*/
+  column-gap: 20px;
+  row-gap: 20px; /*self-explanatory*. Units cannot be fr*/
+  grid-gap: 20px; /*This does both column-gap and grid-gap at once*/
+  /*Gap can do this also, but make it specific to grid*/
+
+  /* new method for grid-template-columns, more efficient*/
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;/*rows are now 100px tall*/
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(100px, auto); /*min ix 100px, max is auto*/
+}
